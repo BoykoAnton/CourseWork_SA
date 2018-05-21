@@ -44,6 +44,27 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult AdminTimetable()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminTimetable(string login, string role, string password, string passwordrepeat)
+        {
+            if (!password.Equals(passwordrepeat))
+            {
+                ViewBag.Message = "Passwords dont match";
+                return View();
+            }
+
+            UserOperations uo = new UserOperations();
+            uo.AddUser(new MUser(login, password, role));
+            ViewBag.Message = "Succesfully registred";
+            return View();
+        }
+
         [HttpPost]
         public ActionResult TeacherTimetable(string teacher)
         {

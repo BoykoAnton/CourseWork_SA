@@ -204,6 +204,7 @@
     <Content Include="Views\Home\SingUp.cshtml" />
     <Content Include="Views\Home\RedactorTimeTable.cshtml" />
     <Content Include="Views\Home\TeacherTimeTable.cshtml" />
+    <Content Include="Views\Home\AdminTimeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
