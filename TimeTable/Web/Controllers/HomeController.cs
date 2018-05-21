@@ -50,6 +50,31 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult ManagerTimetable()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ManagerTimetable(string auditory)
+        {
+            LessonOperations lo = new LessonOperations();
+            var list = lo.GetLessons();
+            string result = "";
+
+            foreach (MLesson l in list)
+            {
+                if (l.Auditory.Equals(auditory))
+                {
+                    result += "<br>" + " Day of week:  " + l.Day + " Group:  " + l.Group + " Number of lesson:  " + l.Para + " Code of auditory:  " + l.Auditory + " Name of subject:  " + l.Subject + " Teacher:  " + l.Teacher;
+                }
+            }
+
+            ViewBag.Message = result;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AdminTimetable(string login, string role, string password, string passwordrepeat)
         {
