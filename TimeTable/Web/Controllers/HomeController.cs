@@ -28,10 +28,19 @@ namespace Web.Controllers
         }
 
 
-            [HttpPost]
+        [HttpPost]
         public ActionResult SingUp(string login, string password, string passwordrepeat)
         {
-            return View();
+            if (!password.Equals(passwordrepeat))
+            {
+                ViewBag.Message = "Passwords dont match";
+                return View();
+            }
+
+            UserOperations uo = new UserOperations();
+            uo.AddUser(new MUser(login,password, "student"));
+            ViewBag.Message = "Succesfully registred";
+            return View();   
         }
 
         public ActionResult StudentTimetable()
