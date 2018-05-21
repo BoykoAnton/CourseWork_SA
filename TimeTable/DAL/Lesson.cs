@@ -10,25 +10,27 @@ namespace DAL
     {
         public Lesson() { }
 
-        public Lesson(Auditory Auditory, string Day, int Week, int Para)
+        public Lesson(string day, int para, string group, string teacher, string auditory, string subject)
         {
-            this.Auditory = Auditory;
-            this.Day = Day;
-            this.Week = Week;
-            this.Para = Para;
+            Day = day;
+            Para = para;
+            Group = group;
+            Teacher = teacher;
+            Auditory = auditory;
+            Subject = subject;
         }
+
         public int Id { get; set; }
 
         public string Day { get; set; }
-        public int Week { get; set; }
         public int Para { get; set; }
 
-        public Group Group { get; set; }
+        public string Group { get; set; }
 
-        public Teatcher Teacher { get; set; }
+        public string Teacher { get; set; }
 
-        public Auditory Auditory { get; set; }
+        public string Auditory { get; set; }
 
-        public Subject Subject { get; set; }
+        public string Subject { get; set; }
     }
 }

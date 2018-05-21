@@ -11,7 +11,7 @@ namespace Web.Controllers
 
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
             return View();
@@ -27,6 +27,71 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult RedactorTimeTable()
+        {
+            return View();
+        }
+
+        public ActionResult StudentTimetable()
+        {
+
+            return View();
+        }
+
+        public ActionResult TeacherTimetable()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TeacherTimetable(string teacher)
+        {
+            LessonOperations lo = new LessonOperations();
+            var list = lo.GetLessons();
+            string result = "";
+
+            foreach (MLesson l in list)
+            {
+                if (l.Teacher.Equals(teacher))
+                {
+                    result += "<br>" +" Day of week:  " + l.Day + " Group:  " + l.Group + " Number of lesson:  " + l.Para + " Code of auditory:  " + l.Auditory + " Name of subject:  " + l.Subject + " Teacher:  " + l.Teacher;
+                }
+            }
+
+            ViewBag.Message = result;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult StudentTimetable(string group)
+        {
+            LessonOperations lo = new LessonOperations();
+            var list = lo.GetLessons();
+            string result = "";
+           
+            foreach(MLesson l in list)
+            {
+                if (l.Group.Equals(group))
+                {
+                    result += "<br>"+" Day of week:  " + l.Day + " Number of lesson:  " + l.Para + " Code of auditory:  " + l.Auditory + " Name of subject:  " + l.Subject + " Teacher:  " + l.Teacher;
+                }
+            }
+
+            ViewBag.Message = result;
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult RedactorTimeTable(string day, string number, string group, string teatcher, string auditory, string subject)
+        {
+            LessonOperations lo = new LessonOperations();
+            lo.AddLesson(new MLesson(day,int.Parse(number), group,teatcher,auditory,subject));
+            ViewBag.Message = "Succsesfully added";
+            return View();
+        }
 
         [HttpPost]
         public ActionResult SingUp(string login, string password, string passwordrepeat)
@@ -42,13 +107,7 @@ namespace Web.Controllers
             ViewBag.Message = "Succesfully registred";
             return View();   
         }
-
-        public ActionResult StudentTimetable()
-        {
-            
-            return View();
-        }
-
+        
         [HttpPost]
         public ActionResult Login(string login, string password)
         {
@@ -65,6 +124,14 @@ namespace Web.Controllers
 
             if (role.Equals("student"))
                 return Redirect("studenttimetable");
+            else if (role.Equals("redactor"))
+                return Redirect("redactortimetable");
+            else if (role.Equals("teacher"))
+                return Redirect("teachertimetable");
+            else if (role.Equals("manager"))
+                return Redirect("managertimetable");
+            else if (role.Equals("admin"))
+                return Redirect("admintimetable");
             else
             {
                 ViewBag.Message = "Incorrect login or password, try again";

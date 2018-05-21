@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace BLL.Models
 {
-    class MLesson
+    public class MLesson
     {
         public MLesson() { }
 
-        public MLesson(MAuditory Auditory, string Day, int Week, int Para)
+        public MLesson(string day, int para, string group, string teacher, string auditory, string subject)
         {
-            this.Auditory = Auditory;
-            this.Day = Day;
-            this.Week = Week;
-            this.Para = Para;
+            Day = day;
+            Para = para;
+            Group = group;
+            Teacher = teacher;
+            Auditory = auditory;
+            Subject = subject;
         }
+
         public int Id { get; set; }
 
         public string Day { get; set; }
-        public int Week { get; set; }
         public int Para { get; set; }
 
-        public MGroup Group { get; set; }
+        public string Group { get; set; }
 
-        public MTeatcher Teacher { get; set; }
+        public string Teacher { get; set; } 
 
-        public MAuditory Auditory { get; set; }
+        public string Auditory { get; set; }
 
-        public MSubject Subject { get; set; }
+        public string Subject { get; set; }
     }
 }

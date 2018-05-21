@@ -12,7 +12,7 @@ namespace BLL.Models
         {
         }
 
-        public MTeatcher(MDepartment departament, string name, ICollection<MLesson> lessons)
+        public MTeatcher(string departament, string name, ICollection<MLesson> lessons)
         {
             Departament = departament;
             Name = name;
@@ -20,7 +20,7 @@ namespace BLL.Models
         }
 
         public int Id { get; set; }
-        public MDepartment Departament { get; set; }
+        public string Departament { get; set; }
         public string Name { get; set; }
         public ICollection<MLesson> Lessons { get; set; }
     }

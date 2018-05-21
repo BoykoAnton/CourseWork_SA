@@ -202,6 +202,8 @@
     <Content Include="Views\Home\StudentTimetable.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\SingUp.cshtml" />
+    <Content Include="Views\Home\RedactorTimeTable.cshtml" />
+    <Content Include="Views\Home\TeacherTimeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
