@@ -10,15 +10,16 @@ using System.Data.Entity;
 namespace BLL.Tests
 {
     [TestClass()]
-    public class GroupOperationsTests
+    public class LessonOperationsTests
     {
         [TestMethod()]
-        public void GetGroupsTest()
+        public void GetLessonsTest()
         {
-            GroupOperations groupOperations = new GroupOperations();
-            groupOperations.GetGroups();
-            groupOperations.GetGroupById(0);
-            groupOperations.AddGroup(new Models.MGroup());
+            var groupOperations = new LessonOperations();
+            groupOperations.GetLessons();
+            groupOperations.AddLesson(new Models.MLesson ());
+
+            groupOperations.GetLessonByID(0);
         }
     }
 }
